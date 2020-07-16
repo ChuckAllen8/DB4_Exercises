@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Playing_Cards
+﻿namespace Playing_Cards
 {
     class Program
     {

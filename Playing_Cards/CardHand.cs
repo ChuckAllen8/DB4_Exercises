@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 
 namespace Playing_Cards
 {
     public enum HandType
     {
-        HighCard,
-        Pair,
-        TwoPair,
-        ThreeOfAKind,
-        Straight,
-        Flush,
-        FourOfAKind,
-        FullHouse,
-        StraightFlush
+        HighCard, //highest card, next card on ties
+        Pair, // highest pair, then each card after
+        TwoPair, // highest pair, then second pair, then high card
+        ThreeOfAKind, //highest of the 3
+        Straight, //Highest card - both mixed suits = tie
+        Flush, //Just a matter of suit
+        FourOfAKind, // highest card
+        FullHouse, // highest three of a kind
+        StraightFlush //highest card, then suit
     }
 
     class CardHand
@@ -29,8 +28,8 @@ namespace Playing_Cards
         public CardHand(List<Card> cards)
         {
             hand = cards;
-            hand.Sort();
-            hand.Reverse();
+            //hand.Sort();
+            //hand.Reverse();
         }
 
         public override string ToString()
@@ -90,17 +89,21 @@ namespace Playing_Cards
                 return HandType.Pair;
             }
 
-            bool straight = true;
-            List<CRank> ranks = new List<CRank>();
-            foreach (CRank val in values.Keys)
-            {
-                ranks.Add(val);
-            }
-            ranks.Sort();
 
-            for (int index = 1; index < ranks.Count; index++)
+            List<Card> sortedHand = new List<Card>();
+            foreach(Card card1 in hand)
             {
-                if(ranks[index] != (ranks[index-1] + 1))
+                sortedHand.Add(card1);
+            }
+
+            sortedHand.Sort();
+            sortedHand.Reverse();
+
+            bool straight = true;
+            
+            for (int index = 1; index < sortedHand.Count; index++)
+            {
+                if(sortedHand[index].Rank != (sortedHand[index-1].Rank - 1))
                 {
                     straight = false;
                 }

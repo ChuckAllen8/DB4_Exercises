@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            HandGame game = new HandGame();
-            game.Start();
+            FiveCardDraw game = new FiveCardDraw();
+            game.Game();
         }
     }
 }

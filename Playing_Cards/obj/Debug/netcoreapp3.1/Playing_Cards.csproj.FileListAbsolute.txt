@@ -1,0 +1,13 @@
+C:\devbuild4\DB4_Exercises\Playing_Cards\bin\Debug\netcoreapp3.1\Playing_Cards.exe
+C:\devbuild4\DB4_Exercises\Playing_Cards\bin\Debug\netcoreapp3.1\Playing_Cards.deps.json
+C:\devbuild4\DB4_Exercises\Playing_Cards\bin\Debug\netcoreapp3.1\Playing_Cards.runtimeconfig.json
+C:\devbuild4\DB4_Exercises\Playing_Cards\bin\Debug\netcoreapp3.1\Playing_Cards.runtimeconfig.dev.json
+C:\devbuild4\DB4_Exercises\Playing_Cards\bin\Debug\netcoreapp3.1\Playing_Cards.dll
+C:\devbuild4\DB4_Exercises\Playing_Cards\bin\Debug\netcoreapp3.1\Playing_Cards.pdb
+C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.csprojAssemblyReference.cache
+C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.AssemblyInfoInputs.cache
+C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.AssemblyInfo.cs
+C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.csproj.CoreCompileInputs.cache
+C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.dll
+C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.pdb
+C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.genruntimeconfig.cache

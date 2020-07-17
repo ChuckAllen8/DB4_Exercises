@@ -162,7 +162,7 @@ namespace Playing_Cards
             }
         }
 
-        private HandValue DetermineHand(List<Card> hand)
+        public HandValue DetermineHand(List<Card> hand)
         {
             Dictionary<CSuit, int> suits = new Dictionary<CSuit, int>();
             Dictionary<CRank, int> values = new Dictionary<CRank, int>();

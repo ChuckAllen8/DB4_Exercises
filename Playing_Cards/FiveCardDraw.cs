@@ -95,6 +95,31 @@ namespace Playing_Cards
                 winner = isWinner();
             }
             CongratulateWinner(Winner());
+            if(GoAgain())
+            {
+                Game();
+            }
+        }
+
+        private bool GoAgain()
+        {
+            Console.Write("Would you like to go again (y/n)? ");
+            ConsoleKey selection = Console.ReadKey().Key;
+            Console.WriteLine();
+
+            if(selection == ConsoleKey.Y)
+            {
+                return true;
+            }
+            else if(selection == ConsoleKey.N)
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection, try again.");
+                return GoAgain();
+            }
         }
 
         private void ShowPlayerHand()

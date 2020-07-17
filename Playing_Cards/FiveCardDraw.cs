@@ -22,6 +22,7 @@ namespace Playing_Cards
             while (settingUp)
             {
                 Console.OutputEncoding = Encoding.Unicode;
+                Console.SetWindowSize(WIDTH*-4, 25);
                 Console.WriteLine("Welcome to Five Card Draw!");
                 Console.Write("How many players do you want to play with (1-3)? ");
                 if (!int.TryParse(Console.ReadLine(), out int playerCount) || !(playerCount >= 1 && playerCount <= 3))
@@ -81,8 +82,9 @@ namespace Playing_Cards
                 ShowPlayerHand();
 
                 //Get all replacements, and draw new cards.
+                Console.CursorVisible = true;
                 Replace();
-
+                Console.CursorVisible = false;
                 //determine who wins, and show all the hands
                 DetermineHand();
                 ShowAllHands();

@@ -57,6 +57,10 @@ namespace Playing_Cards
                         default:
                             throw new InvalidOperationException();
                     }
+                    if(cpu.Name == user.Name)
+                    {
+                        cpu.Name = "Billy Buddy";
+                    }
                     allPlayers.Add(cpu);
                     scores.Add(cpu, 0);
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Playing_Cards
+﻿namespace Playing_Cards
 {
     class Player
     {
@@ -10,11 +6,11 @@ namespace Playing_Cards
         public CardHand Hand { get; set; }
 
         public virtual void ReplaceCard(CardDeck deck)
-        {}
+        { }
 
         public void ClearHand()
         {
-            while(Hand.Count > 0)
+            while (Hand.Count > 0)
             {
                 Hand.RemoveCard(0);
             }

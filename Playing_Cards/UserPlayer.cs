@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Playing_Cards
 {
@@ -29,7 +28,7 @@ namespace Playing_Cards
                     Console.WriteLine();
                     break;
                 }
-                else if(!int.TryParse(toReplace, out index) || !(index >= 1 && index <=5))
+                else if (!int.TryParse(toReplace, out index) || !(index >= 1 && index <= 5))
                 {
                     Console.WriteLine("That is not a valid selection.");
                     continue;
@@ -43,7 +42,7 @@ namespace Playing_Cards
                 index--;
                 Hand.RemoveCard(index);
                 Hand.AddCard(deck.Draw, index);
-                if(cardsReplaced.Count == maxReplacable)
+                if (cardsReplaced.Count == maxReplacable)
                 {
                     replacing = false;
                     Console.WriteLine("Maximum cards reached!");

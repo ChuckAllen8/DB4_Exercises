@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Runtime;
 using System.Text;
 
 namespace Playing_Cards
@@ -22,7 +20,7 @@ namespace Playing_Cards
             while (settingUp)
             {
                 Console.OutputEncoding = Encoding.Unicode;
-                Console.SetWindowSize(WIDTH*-4, 25);
+                Console.SetWindowSize(WIDTH * -4, 25);
                 Console.WriteLine("Welcome to Five Card Draw!");
                 Console.Write("How many players do you want to play with (1-3)? ");
                 if (!int.TryParse(Console.ReadLine(), out int playerCount) || !(playerCount >= 1 && playerCount <= 3))
@@ -57,7 +55,7 @@ namespace Playing_Cards
                         default:
                             throw new InvalidOperationException();
                     }
-                    if(cpu.Name == user.Name)
+                    if (cpu.Name == user.Name)
                     {
                         cpu.Name = "Billy Buddy";
                     }
@@ -71,7 +69,7 @@ namespace Playing_Cards
 
         public void Game()
         {
-            while(!winner)
+            while (!winner)
             {
                 //shuffling takes a moment, do it first
                 deck.Shuffle(SHUFFLE);
@@ -95,7 +93,7 @@ namespace Playing_Cards
                 winner = isWinner();
             }
             CongratulateWinner(Winner());
-            if(GoAgain())
+            if (GoAgain())
             {
                 Game();
             }
@@ -107,11 +105,11 @@ namespace Playing_Cards
             ConsoleKey selection = Console.ReadKey().Key;
             Console.WriteLine();
 
-            if(selection == ConsoleKey.Y)
+            if (selection == ConsoleKey.Y)
             {
                 return true;
             }
-            else if(selection == ConsoleKey.N)
+            else if (selection == ConsoleKey.N)
             {
                 return false;
             }
@@ -147,7 +145,7 @@ namespace Playing_Cards
 
         private void ClearHands()
         {
-            foreach(Player player in allPlayers)
+            foreach (Player player in allPlayers)
             {
                 player.ClearHand();
             }
@@ -157,7 +155,7 @@ namespace Playing_Cards
         {
             StringBuilder nameRow = new StringBuilder();
             StringBuilder scoreRow = new StringBuilder();
-            foreach(KeyValuePair<Player, int> score in scores)
+            foreach (KeyValuePair<Player, int> score in scores)
             {
                 nameRow.Append($"{score.Key.Name,WIDTH}");
                 scoreRow.Append($"{"Score: " + score.Value,WIDTH}");
@@ -168,7 +166,7 @@ namespace Playing_Cards
 
         private void Deal()
         {
-            for(int cardNum = 1; cardNum <= 5; cardNum++)
+            for (int cardNum = 1; cardNum <= 5; cardNum++)
             {
                 for (int playerNum = 0; playerNum < allPlayers.Count; playerNum++)
                 {
@@ -198,9 +196,9 @@ namespace Playing_Cards
 
         private bool isWinner()
         {
-            foreach(KeyValuePair<Player, int> score in scores)
+            foreach (KeyValuePair<Player, int> score in scores)
             {
-                if(score.Value == 10)
+                if (score.Value == 10)
                 {
                     return true;
                 }

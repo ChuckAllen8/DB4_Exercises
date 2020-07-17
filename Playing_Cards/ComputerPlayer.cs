@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Playing_Cards
 {
@@ -47,7 +45,7 @@ namespace Playing_Cards
                 case HandType.ThreeOfAKind:
                     for (int index = 0; index < Hand.Count; index++)
                     {
-                        if(Hand.Cards[index].Rank != myVal.HighestPair)
+                        if (Hand.Cards[index].Rank != myVal.HighestPair)
                         {
                             replace.Add(index);
                         }
@@ -56,7 +54,7 @@ namespace Playing_Cards
                 default:
                     return;
             }
-            foreach(int cardIndex in replace)
+            foreach (int cardIndex in replace)
             {
                 Hand.RemoveCard(cardIndex);
                 Hand.AddCard(deck.Draw, cardIndex);

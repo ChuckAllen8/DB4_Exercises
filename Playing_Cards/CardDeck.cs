@@ -47,12 +47,12 @@ namespace Playing_Cards
             {
                 CutMiddle(false);
                 CutCards(random.Next(20, 31));
-                if(cut % 2 == 0)
+                if (cut % 2 == 0)
                 {
                     CutMiddle(true);
                 }
             }
-            topCardIndex = cards.Count-1;
+            topCardIndex = cards.Count - 1;
         }
 
         private void CutCards(int sizeSideOne)
@@ -68,7 +68,7 @@ namespace Playing_Cards
             {
                 secondHalf.Add(cards[index]);
             }
-            if(sizeSideOne < 26)
+            if (sizeSideOne < 26)
             {
                 MergeCards(secondHalf, firstHalf);
             }
@@ -108,18 +108,18 @@ namespace Playing_Cards
         private void MergeCards(List<Card> part1, List<Card> part2)
         {
             List<Card> newDeck = new List<Card>();
-            for(int cardNum = 0; cardNum < cards.Count; cardNum++)
+            for (int cardNum = 0; cardNum < cards.Count; cardNum++)
             {
                 try
                 {
                     newDeck.Add(part1[cardNum]);
                 }
-                catch {}
+                catch { }
                 try
                 {
                     newDeck.Add(part2[cardNum]);
                 }
-                catch {}
+                catch { }
             }
             cards = newDeck;
         }

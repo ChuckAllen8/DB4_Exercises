@@ -1,21 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Playing_Cards
 {
-    
+
 
     class CardHand
     {
-        private List<Card> hand;
-        private List<Card> sortedHand;
-
         public int MaxReplacable
         {
             get
             {
-                foreach(Card card in hand)
+                foreach (Card card in Cards)
                 {
                     if (card.Rank == CRank.Ace)
                     {
@@ -28,52 +24,46 @@ namespace Playing_Cards
 
         public CardHand()
         {
-            hand = new List<Card>();
-            sortedHand = new List<Card>();
+            Cards = new List<Card>();
+            SortedCards = new List<Card>();
         }
 
         public void AddCard(Card card, int index)
         {
-            hand.Insert(index, card);
-            sortedHand.Add(card);
-            sortedHand.Sort();
-            sortedHand.Reverse();
+            Cards.Insert(index, card);
+            SortedCards.Add(card);
+            SortedCards.Sort();
+            SortedCards.Reverse();
         }
 
-        public List<Card> Cards
-        {
-            get { return hand; }
-        }
+        public List<Card> Cards { get; }
 
-        public List<Card> SortedCards
-        {
-            get { return sortedHand; }
-        }
+        public List<Card> SortedCards { get; }
 
         public void RemoveCard(int index)
         {
-            sortedHand.Remove(hand[index]);
-            hand.RemoveAt(index);
+            SortedCards.Remove(Cards[index]);
+            Cards.RemoveAt(index);
         }
 
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
-            foreach (Card card in hand)
+            foreach (Card card in Cards)
             {
-                output.Append($"{card.ToString()} ");
+                output.Append($"{card} ");
             }
             return output.ToString().Trim();
         }
 
         public Card this[int index]
         {
-            get { return hand[index]; }
+            get { return Cards[index]; }
         }
 
         public int Count
         {
-            get { return hand.Count; }
+            get { return Cards.Count; }
         }
     }
 }

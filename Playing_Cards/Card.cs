@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
 namespace Playing_Cards
 {
@@ -44,7 +42,7 @@ namespace Playing_Cards
         public override string ToString()
         {
             char display = ' ';
-            switch(Suit)
+            switch (Suit)
             {
                 case CSuit.Clubs:
                     display = '\u2663';
@@ -59,7 +57,7 @@ namespace Playing_Cards
                     display = '\u2660';
                     break;
             }
-            if((int)Rank < 11)
+            if ((int)Rank < 11)
             {
                 return $"{(int)Rank,2}{display}";
             }
@@ -71,7 +69,7 @@ namespace Playing_Cards
 
         public int CompareTo([AllowNull] Card other)
         {
-            if(this.Rank == other.Rank)
+            if (this.Rank == other.Rank)
             {
                 return this.Suit.CompareTo(other.Suit);
             }

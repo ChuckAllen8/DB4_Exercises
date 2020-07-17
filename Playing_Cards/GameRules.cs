@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Playing_Cards
@@ -37,7 +36,7 @@ namespace Playing_Cards
 
     public struct HandValue
     {
-        public HandType Type { get; set;  }
+        public HandType Type { get; set; }
 
         public List<Card> SortedCards { get; set; }
 
@@ -66,7 +65,7 @@ namespace Playing_Cards
 
             for (int index = 1; index < values.Count; index++)
             {
-                if(values[index].Type > winningHand.Type)
+                if (values[index].Type > winningHand.Type)
                 {
                     //the new hand wins
                     winningHand = values[index];
@@ -91,9 +90,9 @@ namespace Playing_Cards
         {
             int winningScore = 0;
             Player winngingPlayer = null;
-            foreach(KeyValuePair<Player, int> player in scores)
+            foreach (KeyValuePair<Player, int> player in scores)
             {
-                if(player.Value > winningScore)
+                if (player.Value > winningScore)
                 {
                     winngingPlayer = player.Key;
                     winningScore = player.Value;
@@ -116,7 +115,7 @@ namespace Playing_Cards
                 case HandType.Straight:
                     return one.HighestPair.CompareTo(two.HighestPair);
                 case HandType.StraightFlush:
-                    if(one.HighestPair.CompareTo(two.HighestPair) == 0)
+                    if (one.HighestPair.CompareTo(two.HighestPair) == 0)
                     {
                         return one.WinningSuit.CompareTo(two.WinningSuit);
                     }
@@ -125,9 +124,9 @@ namespace Playing_Cards
                         return one.HighestPair.CompareTo(two.HighestPair);
                     }
                 case HandType.TwoPair:
-                    if(one.HighestPair.CompareTo(two.HighestPair) == 0)
+                    if (one.HighestPair.CompareTo(two.HighestPair) == 0)
                     {
-                        if(one.LowestPair.CompareTo(two.LowestPair) == 0)
+                        if (one.LowestPair.CompareTo(two.LowestPair) == 0)
                         {
                             return one.OffCard.CompareTo(two.OffCard);
                         }
@@ -142,15 +141,15 @@ namespace Playing_Cards
                     }
                 case HandType.HighCard:
                 case HandType.Pair:
-                    if(one.HighestPair.CompareTo(two.HighestPair) != 0)
+                    if (one.HighestPair.CompareTo(two.HighestPair) != 0)
                     {
                         return one.HighestPair.CompareTo(two.HighestPair);
                     }
                     else
                     {
-                        for(int index = 0; index < one.SortedCards.Count; index++)
+                        for (int index = 0; index < one.SortedCards.Count; index++)
                         {
-                            if(one.SortedCards[index].Rank != two.SortedCards[index].Rank)
+                            if (one.SortedCards[index].Rank != two.SortedCards[index].Rank)
                             {
                                 return one.SortedCards[index].Rank.CompareTo(two.SortedCards[index].Rank);
                             }
@@ -244,7 +243,7 @@ namespace Playing_Cards
 
 
                 //two pair
-                if(values.ElementAt(0).Value == 2 && values.ElementAt(1).Value == 2)
+                if (values.ElementAt(0).Value == 2 && values.ElementAt(1).Value == 2)
                 {
                     val.Type = HandType.TwoPair;
                     if (values.ElementAt(0).Key > values.ElementAt(1).Key)
@@ -301,7 +300,7 @@ namespace Playing_Cards
             if (values.Count == 4)
             {
                 val.Type = HandType.Pair;
-                if(values.ElementAt(0).Value == 2)
+                if (values.ElementAt(0).Value == 2)
                 {
                     val.HighestPair = values.ElementAt(0).Key;
                 }

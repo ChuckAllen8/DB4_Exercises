@@ -10,6 +10,22 @@ namespace Playing_Cards
     {
         private List<Card> hand;
         private List<Card> sortedHand;
+        private int maxReplacable;
+
+        public int MaxReplacable
+        {
+            get
+            {
+                foreach(Card card in hand)
+                {
+                    if (card.Rank == CRank.Ace)
+                    {
+                        return 4;
+                    }
+                }
+                return 3;
+            }
+        }
 
         public CardHand()
         {

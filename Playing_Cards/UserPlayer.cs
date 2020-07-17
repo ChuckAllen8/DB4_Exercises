@@ -17,6 +17,8 @@ namespace Playing_Cards
         {
             List<int> cardsReplaced = new List<int>();
             bool replacing = true;
+            int maxReplacable = Hand.MaxReplacable;
+            Console.WriteLine($"You are allowed to replace {maxReplacable} cards.");
             while (replacing)
             {
                 Console.Write("Enter the number (1-5) of a card to replace, or (D)one: ");
@@ -41,6 +43,11 @@ namespace Playing_Cards
                 index--;
                 Hand.RemoveCard(index);
                 Hand.AddCard(deck.Draw, index);
+                if(cardsReplaced.Count == maxReplacable)
+                {
+                    replacing = false;
+                    Console.WriteLine("Maximum cards reached!");
+                }
             }
         }
     }

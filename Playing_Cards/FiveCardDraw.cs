@@ -45,7 +45,7 @@ namespace Playing_Cards
                     switch (playerNum)
                     {
                         case 0:
-                            cpu = new ComputerPlayer("Dr. Horrible");
+                            cpu = new ComputerPlayer("Mike");
                             break;
                         case 1:
                             cpu = new ComputerPlayer("Riley");
@@ -54,8 +54,7 @@ namespace Playing_Cards
                             cpu = new ComputerPlayer("Jeff");
                             break;
                         default:
-                            cpu = new ComputerPlayer("Broken");
-                            break;
+                            throw new InvalidOperationException();
                     }
                     allPlayers.Add(cpu);
                     scores.Add(cpu, 0);

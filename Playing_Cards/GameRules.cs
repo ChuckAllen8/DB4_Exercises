@@ -6,15 +6,15 @@ namespace Playing_Cards
 {
     public enum HandType
     {
-        HighCard, //highest card, next card on ties
-        Pair, // highest pair, then each card after
-        TwoPair, // highest pair, then second pair, then high card
-        ThreeOfAKind, //highest of the 3
-        Straight, //Highest card - both mixed suits = tie
-        Flush, //Just a matter of suit
-        FourOfAKind, // highest card
-        FullHouse, // highest three of a kind
-        StraightFlush //highest card, then suit
+        HighCard,
+        Pair,
+        TwoPair,
+        ThreeOfAKind,
+        Straight,
+        Flush,
+        FullHouse,
+        FourOfAKind,
+        StraightFlush
     }
 
     //
@@ -45,6 +45,8 @@ namespace Playing_Cards
 
         public CRank LowestPair { get; set; }
 
+        public CRank OffCard { get; set; }
+
         public CSuit WinningSuit { get; set; }
     }
 
@@ -74,7 +76,7 @@ namespace Playing_Cards
                 {
                     //determine Tie breaker
                     int tieBreaker = TieBreaker(winningHand, values[index]);
-                    if (tieBreaker > 0)
+                    if (tieBreaker < 0)
                     {
                         winningHand = values[index];
                         winningIndex = index;
@@ -102,9 +104,62 @@ namespace Playing_Cards
 
         private int TieBreaker(HandValue one, HandValue two)
         {
-            //-1 if the first paramater wins, 1 if the second parameter wins.
-            //need to implement!!!!!
-            return 0;
+            //1 if the first paramater wins, -1 if the second parameter wins.
+            //0 in the event of a tie, favor goes to the left (current winner)
+            switch (one.Type)
+            {
+                case HandType.Flush:
+                    return one.WinningSuit.CompareTo(two.WinningSuit);
+                case HandType.FullHouse:
+                case HandType.FourOfAKind:
+                case HandType.ThreeOfAKind:
+                case HandType.Straight:
+                    return one.HighestPair.CompareTo(two.HighestPair);
+                case HandType.StraightFlush:
+                    if(one.HighestPair.CompareTo(two.HighestPair) == 0)
+                    {
+                        return one.WinningSuit.CompareTo(two.WinningSuit);
+                    }
+                    else
+                    {
+                        return one.HighestPair.CompareTo(two.HighestPair);
+                    }
+                case HandType.TwoPair:
+                    if(one.HighestPair.CompareTo(two.HighestPair) == 0)
+                    {
+                        if(one.LowestPair.CompareTo(two.LowestPair) == 0)
+                        {
+                            return one.OffCard.CompareTo(two.OffCard);
+                        }
+                        else
+                        {
+                            return one.LowestPair.CompareTo(two.LowestPair);
+                        }
+                    }
+                    else
+                    {
+                        return one.HighestPair.CompareTo(two.HighestPair);
+                    }
+                case HandType.HighCard:
+                case HandType.Pair:
+                    if(one.HighestPair.CompareTo(two.HighestPair) != 0)
+                    {
+                        return one.HighestPair.CompareTo(two.HighestPair);
+                    }
+                    else
+                    {
+                        for(int index = 0; index < 5; index++)
+                        {
+                            if(one.SortedCards[index].Rank != two.SortedCards[index].Rank)
+                            {
+                                return one.SortedCards[index].Rank.CompareTo(two.SortedCards[index].Rank);
+                            }
+                        }
+                        return 0;
+                    }
+                default:
+                    return 0;
+            }
         }
 
         private HandValue DetermineHand(List<Card> hand)
@@ -196,11 +251,13 @@ namespace Playing_Cards
                     {
                         val.HighestPair = values.ElementAt(0).Key;
                         val.LowestPair = values.ElementAt(1).Key;
+                        val.OffCard = values.ElementAt(2).Key;
                     }
                     else
                     {
                         val.HighestPair = values.ElementAt(1).Key;
                         val.LowestPair = values.ElementAt(0).Key;
+                        val.OffCard = values.ElementAt(2).Key;
                     }
                     return val;
                 }
@@ -211,11 +268,13 @@ namespace Playing_Cards
                     {
                         val.HighestPair = values.ElementAt(1).Key;
                         val.LowestPair = values.ElementAt(2).Key;
+                        val.OffCard = values.ElementAt(0).Key;
                     }
                     else
                     {
                         val.HighestPair = values.ElementAt(2).Key;
                         val.LowestPair = values.ElementAt(1).Key;
+                        val.OffCard = values.ElementAt(0).Key;
                     }
                     return val;
                 }
@@ -226,11 +285,13 @@ namespace Playing_Cards
                     {
                         val.HighestPair = values.ElementAt(0).Key;
                         val.LowestPair = values.ElementAt(2).Key;
+                        val.OffCard = values.ElementAt(1).Key;
                     }
                     else
                     {
                         val.HighestPair = values.ElementAt(2).Key;
                         val.LowestPair = values.ElementAt(0).Key;
+                        val.OffCard = values.ElementAt(1).Key;
                     }
                     return val;
                 }

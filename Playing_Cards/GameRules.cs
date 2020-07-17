@@ -334,6 +334,7 @@ namespace Playing_Cards
             //determine straight
             if (straight)
             {
+                val.HighestPair = hand[0].Rank;
                 //determine straight flush
                 if (suits.Count == 1)
                 {
@@ -352,6 +353,7 @@ namespace Playing_Cards
                 val.WinningSuit = suits.ElementAt(0).Key;
                 return val;
             }
+            val.HighestPair = hand[0].Rank;
             val.Type = HandType.HighCard;
             return val;
         }

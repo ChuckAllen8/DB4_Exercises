@@ -132,10 +132,13 @@ namespace Playing_Cards
         private void ShowAllHands()
         {
             StringBuilder handRow = new StringBuilder();
+            StringBuilder nameRow = new StringBuilder();
             foreach (KeyValuePair<Player, int> score in scores)
             {
                 handRow.Append($"{score.Key.Hand,WIDTH}");
+                nameRow.Append($"{score.Key.Name,WIDTH}");
             }
+            Console.WriteLine(nameRow);
             Console.WriteLine(handRow);
             Console.WriteLine();
             Console.WriteLine("Press any key to continue.");
@@ -190,6 +193,7 @@ namespace Playing_Cards
             Player winner = ruler.HandWinner(allPlayers, out HandValue hand);
             scores[winner] = scores[winner] + 1;
             Console.WriteLine($"{winner.Name} wins with {hand.Type}");
+            Console.WriteLine();
         }
 
         private bool isWinner()

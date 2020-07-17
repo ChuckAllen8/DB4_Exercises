@@ -181,7 +181,11 @@ namespace Playing_Cards
 
         private void CongratulateWinner(Player player)
         {
-
+            Console.Clear();
+            ShowScoreBoard();
+            Console.WriteLine();
+            Console.WriteLine($"{player.Name} wins!!!");
+            Console.WriteLine();
         }
     }
 }

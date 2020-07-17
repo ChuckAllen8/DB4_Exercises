@@ -148,7 +148,7 @@ namespace Playing_Cards
                     }
                     else
                     {
-                        for(int index = 0; index < 5; index++)
+                        for(int index = 0; index < one.SortedCards.Count; index++)
                         {
                             if(one.SortedCards[index].Rank != two.SortedCards[index].Rank)
                             {

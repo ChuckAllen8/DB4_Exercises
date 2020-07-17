@@ -10,4 +10,3 @@ C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.c
 C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.dll
 C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.pdb
 C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.genruntimeconfig.cache
-C:\devbuild4\DB4_Exercises\Playing_Cards\obj\Debug\netcoreapp3.1\Playing_Cards.csprojAssemblyReference.cache

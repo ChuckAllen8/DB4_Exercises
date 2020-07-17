@@ -16,14 +16,14 @@ namespace Playing_Cards
         {
             GameRules rules = new GameRules();
             HandValue myVal = rules.DetermineHand(Hand.SortedCards);
-            Dictionary<Card, int> replace = new Dictionary<Card, int>();
+            List<int> replace = new List<int>();
 
             switch (myVal.Type)
             {
                 case HandType.HighCard: //replace the three smallest cards
                     for (int index = Hand.Count - 1; index > 1; index--)
                     {
-                        replace.Add(Hand.SortedCards[index], Hand.Cards.IndexOf(Hand.SortedCards[index]));
+                        replace.Add(Hand.Cards.IndexOf(Hand.SortedCards[index]));
                     }
                     break;
                 case HandType.Pair:
@@ -31,7 +31,7 @@ namespace Playing_Cards
                     {
                         if (Hand.Cards[index].Rank != myVal.HighestPair)
                         {
-                            replace.Add(Hand.Cards[index], index);
+                            replace.Add(index);
                         }
                     }
                     break;
@@ -40,7 +40,7 @@ namespace Playing_Cards
                     {
                         if (Hand.Cards[index].Rank != myVal.HighestPair && Hand.Cards[index].Rank != myVal.LowestPair)
                         {
-                            replace.Add(Hand.Cards[index], index);
+                            replace.Add(index);
                         }
                     }
                     break;
@@ -49,17 +49,17 @@ namespace Playing_Cards
                     {
                         if(Hand.Cards[index].Rank != myVal.HighestPair)
                         {
-                            replace.Add(Hand.Cards[index], index);
+                            replace.Add(index);
                         }
                     }
                     break;
                 default:
                     return;
             }
-            foreach(KeyValuePair<Card, int> card in replace)
+            foreach(int cardIndex in replace)
             {
-                Hand.RemoveCard(card.Value);
-                Hand.AddCard(deck.Draw, card.Value);
+                Hand.RemoveCard(cardIndex);
+                Hand.AddCard(deck.Draw, cardIndex);
             }
         }
     }

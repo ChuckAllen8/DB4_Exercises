@@ -10,7 +10,6 @@ namespace Playing_Cards
     {
         private List<Card> hand;
         private List<Card> sortedHand;
-        private int maxReplacable;
 
         public int MaxReplacable
         {

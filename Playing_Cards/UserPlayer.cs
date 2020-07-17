@@ -47,6 +47,7 @@ namespace Playing_Cards
                 {
                     replacing = false;
                     Console.WriteLine("Maximum cards reached!");
+                    Console.WriteLine();
                 }
             }
         }
